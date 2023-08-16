@@ -9,11 +9,13 @@ class RoomsController < ApplicationController
       redirect_to root_path
       else
         render :new, status: :unprocessable_entity
+    end
   end
-end
 
-private
+  private
 
-def room_params
-  params.require(:room).permit(name, user_ids: [])
+  def room_params
+    params.require(:room).permit(:name, user_ids: [])
+  end
+
 end
