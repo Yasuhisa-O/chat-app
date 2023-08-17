@@ -38,14 +38,14 @@
     </div>
   </div>
 </div>
-<div class="form">
-  <%# <input type="hidden" name="authenticity_token" value="#" autocomplete="off"> %>
+
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
-    <input class="form-message" placeholder="type a message">
+  <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
     <label class="form-image">
-      <span class="image-file">画像</span>
-      <input class="hidden" type="file">
+    <span class="image-file">画像</span>
+    <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-  <input type="submit" name="commit" value="送信" class="form-submit" data-disable-with="送信">
-</div>
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>
